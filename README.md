@@ -35,3 +35,11 @@ the speaker and leds from the REPL. Below is an example session.
 ## Video
 [![intruder alert](http://img.youtube.com/vi/brG66K89dW0/0.jpg)](http://www.youtube.com/watch?v=brG66K89dW0)
 
+
+## Microscope
+The photo below shows the NeoPixel under a digital microscope with a magnification of 200x. The separate red, green and 
+blue LEDs are clearly visible.
+
+![NeoPixel microscope](https://user-images.githubusercontent.com/3801994/38782344-b7b28f2c-40fa-11e8-84e3-360b638302b3.jpg)
+
+
