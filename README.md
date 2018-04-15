@@ -1,5 +1,7 @@
 # snow-globe-alarm
 a snow globe that detects intruders
+
+
 ![snow globe](https://user-images.githubusercontent.com/3801994/38782300-e093ab0c-40f9-11e8-926f-66f29d3467af.jpg)
 
 ## Installation
