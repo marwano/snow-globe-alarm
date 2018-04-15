@@ -1,6 +1,6 @@
 # snow-globe-alarm
 a snow globe that detects intruders
-
+![snow globe](https://user-images.githubusercontent.com/3801994/38782300-e093ab0c-40f9-11e8-926f-66f29d3467af.jpg)
 
 ## Installation
 Plug in the Circuit Playground Express into your USB port. Then copy over the main.py file.
@@ -28,4 +28,8 @@ the speaker and leds from the REPL. Below is an example session.
 >>> 
 
 ```
+
+
+## Video
+[![intruder alert](http://img.youtube.com/vi/brG66K89dW0/0.jpg)](http://www.youtube.com/watch?v=brG66K89dW0)
 
