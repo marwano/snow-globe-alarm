@@ -16,7 +16,6 @@ The teach.py and rgb.txt files can be copied over to the Circuit Playground to m
 the speaker and leds from the REPL. Below is an example session.
 
 ```
-Adafruit CircuitPython 2.2.0 on 2018-01-02; Adafruit CircuitPlayground Express with samd21g18
 >>> from teach import beep, light
 >>> beep()
 >>> beep(500)
