@@ -9,26 +9,37 @@ Plug in the Circuit Playground Express into your USB port. Then copy over the ma
 
 
 ## Usage
-Tap the Circuit Playground to switch between rainbow and alarm mode. When in alarm mode if the A2 sensor detects a 
+Use the Slide switch to change between rainbow and alarm mode. When in alarm mode if the A2 sensor detects a 
 touch an alarm will sound with flashing red LED lights.
 
 
 ## Teach
-The teach.py and rgb.txt files can be copied over to the Circuit Playground to make it easier for students to control
+Copy over teach.py to the Circuit Playground to make it easier for students to control
 the speaker and leds from the REPL. Below is an example session.
 
 ```
->>> from teach import beep, light
+>>> from teach import cpx, beep, led
+>>> 
+>>> # make speaker beep
 >>> beep()
->>> beep(500)
->>> beep(2000)
 >>> 
->>> light()
->>> light('red')
->>> light('green', 2)
+>>> # make speaker beep at 800Hz 
+>>> beep(800)
 >>> 
+>>> # reduce brightness to a lower more comfortable level
+>>> cpx.pixels.brightness = 0.02
 >>> 
-
+>>> # set first LED to white
+>>> led()
+>>> 
+>>> # set second LED to red
+>>> led('red', 1)
+>>> 
+>>> # set first LED to blue with hex color code
+>>> led('0000ff')
+>>> 
+>>> # set first LED to Magenta(red on, green off, blue on)
+>>> led('101')
 ```
 
 
