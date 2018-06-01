@@ -1,14 +1,11 @@
 from adafruit_circuitplayground.express import cpx
 import time
-import random
 
-STEPS = 50
 TONES = dict(low=800, high=960)
-COLORS = dict(
-    black=[0, 0, 0], blue=[0, 0, 255], green=[0, 255, 0],
-    cyan=[0, 255, 255], red=[255, 0, 0], magenta=[255, 0, 255],
-    yellow=[255, 255, 0], white=[255, 255, 255])
-CHOICES = list(set(COLORS.keys()) - {'white', 'black'})
+RGB = dict(black=[0, 0, 0], blue=[0, 0, 255], green=[0, 255, 0],
+           cyan=[0, 255, 255], red=[255, 0, 0], magenta=[255, 0, 255],
+           yellow=[255, 255, 0], white=[255, 255, 255])
+CYCLE = ['cyan', 'blue', 'magenta', 'red', 'green', 'yellow']
 
 
 def beep(frequency=TONES['high']):
@@ -17,49 +14,36 @@ def beep(frequency=TONES['high']):
 
 def alarm():
     for i in range(3):
-        cpx.pixels.fill(COLORS['red'])
+        cpx.pixels.fill(RGB['red'])
         beep(TONES['high'])
-        cpx.pixels.fill(COLORS['black'])
+        cpx.pixels.fill(RGB['black'])
         beep(TONES['low'])
 
 
-def watch():
-    beep()
-    while True:
-        colors = ['green'] * 10 + ['black'] * 10
-        for color in colors:
-            if cpx.touch_A2:
-                alarm()
-            cpx.pixels.fill(COLORS[color])
-            time.sleep(0.05)
-            if cpx.tapped:
-                return
+def detect():
+    colors = ['green'] * 10 + ['black'] * 10
+    for color in colors:
+        if cpx.touch_A2:
+            alarm()
+        cpx.pixels.fill(RGB[color])
+        time.sleep(0.05)
 
 
 def rainbow():
-    beep()
-    levels = [i / STEPS for i in range(STEPS)]
-    levels += [i / STEPS for i in range(STEPS, 0, -1)]
-    while True:
-        base_color = COLORS[random.choice(CHOICES)]
-        for level in levels:
-            adjusted_color = [int(i * level) for i in base_color]
-            cpx.pixels.fill(adjusted_color)
-            time.sleep(0.05)
-            if cpx.tapped:
-                return
-
-
-def init():
-    cpx.detect_taps = 1             # enable single-tap detection
-    cpx.pixels.brightness = 1.0     # set maximum brightness
+    for color in CYCLE:
+        for i in range(10):
+            cpx.pixels[i] = RGB[color]
+            time.sleep(0.3)
 
 
 def main():
-    init()
+    cpx.pixels.brightness = 1.0
+    beep()
     while True:
-        rainbow()
-        watch()
+        if cpx.switch:
+            rainbow()
+        else:
+            detect()
 
 
 main()
